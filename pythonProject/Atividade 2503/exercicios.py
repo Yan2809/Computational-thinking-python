@@ -15,17 +15,29 @@ else:
 anoNascimento = int(input("Digite o seu ano de nascimento: "))
 idade = 2025 - anoNascimento
 
-if idade >= 16:
-    print("Você pode votar esse ano")
+if idade < 16:
+    print("Proibido votar")
+elif idade < 18 or idade >= 70:
+    print("Votar é opcional")
 else:
-    print("Você não pode votar esse ano")
+    print("Votar é obrigatório")
+
+if idade < 16:
+    print("Proibido votar")
+elif idade < 18:
+    print("Votar é opcional, jovem")
+elif idade < 70:
+    print("Votar é obrigatório")
+else:
+    print("Votar é opcional, senhor")
 
 
 #Exercicio 3 - Senha Válida
 
-senha = int(input("Digite uma senha: "))
+senhaCadastrada = "1234"
+senhaFornecida = input("Digite uma senha: ")
 
-if senha == 1234:
+if senhaFornecida == senhaCadastrada:
     print("ACESSO PERMITIDO")
 else:
     print("ACESSO NEGADO")
@@ -35,12 +47,18 @@ else:
 
 quantMaca = int(input("Digite a quantidade de maçã comprada: "))
 
-if quantMaca <= 12:
-    valor = quantMaca * 0.25
-else:
-    valor = quantMaca * 0.30
+#if quantMaca < 12:
+#    valor = 0.3
+#else:
+#    valor = 0.25
+#total = quantMaca * valor
 
-print(f"O valor total da sua compra é R${valor}")
+valor = 0.25
+if quantMaca < 12:
+    valor = 0.3
+total = quantMaca * valor
+
+print(f"O valor total da sua compra é R${total}")
 
 
 #Exercício 5 - Ordem crescente
@@ -80,22 +98,7 @@ else:
 print(f"O seu peso ideal é {pesoIdeal:.1f}")
 
 
-#Exercício 7 - Perímetro de polígonos
-
-numLados = int(input("Digite a quantidade de lados: "))
-medidaLado = int(input("Digite a medida do lado em cm: "))
-
-if numLados == 3:
-    print("Triângulo")
-elif numLados == 4:
-    print("Quadrado")
-elif numLados == 5:
-    print("Pentágono")
-
-print(f"O valor do perímetro é {medidaLado * numLados}cm")
-
-
-#Exercício 8 - Acrescentar ao 7
+#Exercício 7 e 8 - Perímetro de polígonos
 
 numLados = int(input("Digite a quantidade de lados: "))
 medidaLado = int(input("Digite a medida do lado em cm: "))
@@ -117,6 +120,24 @@ else:
     print(f"O valor do perímetro é {medidaLado * numLados}cm")
 
 
+numLados = int(input("Digite a quantidade de lados: "))
+if numLados < 3:
+    print("Não é um polígono")
+elif numLados > 5:
+    print("Polígono não identificado")
+else:
+    medidaLado = int(input("Digite a medida do lado em cm: "))
+    perimetro = numLados * medidaLado
+    if numLados == 3:
+        forma = "triângulo"
+    elif numLados == 4:
+        forma = "quadrado"
+    elif numLados == 5:
+        forma = "pentágono"
+    print(f"É um {forma} de perímetro {perimetro})
+
+
+
 #Exercício 9 - Maior entre os 3
 
 num1 = int(input("Digite o primeiro valor: "))
@@ -129,6 +150,8 @@ if num2 > maiorValor:
     maiorValor = num2
 if num3 > maiorValor:
     maiorValor = num3
+
+print(maiorValor)
 
 
 #Exercício 10 - Classificação de triângulos
@@ -151,10 +174,13 @@ angulo1 = int(input("Digite o valor do primeiro ângulo: "))
 angulo2 = int(input("Digite o valor do segundo ângulo: "))
 angulo3 = int(input("Digite o valor do terceiro ângulo: "))
 
-if angulo1 < 90 and angulo2 < 90 and angulo3 < 90:
-    print("Triângulo Acutângulo")
-elif angulo1 == 90 or angulo2 == 90 or angulo3 == 90:
-    print("Triângulo Retângulo")
+if angulo1 + angulo2 + angulo3 == 180:
+    if angulo1 < 90 and angulo2 < 90 and angulo3 < 90:
+        print("Triângulo Acutângulo")
+    elif angulo1 == 90 or angulo2 == 90 or angulo3 == 90:
+        print("Triângulo Retângulo")
+    else:
+        print("Triângulo Obtusângulo")
 else:
-    print("Triângulo Obtusângulo")
+    print("Não é um triângulo")
 '''
